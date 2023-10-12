@@ -14,7 +14,7 @@ import soldes from '../../../public/icons/Soldes.svg'
 import soldesBlue from '../../../public/icons/Soldes_blue.svg'
 import recherche from '../../../public/icons/Recherche.svg'
 import graphic from '../../../public/icons/Graphic.svg'
-import { Poppins, Roboto_Mono } from 'next/font/google'
+import { Poppins, Roboto } from 'next/font/google'
 
 
 const poppins = Poppins({
@@ -23,11 +23,11 @@ const poppins = Poppins({
     variable: '--font-poppins',
     weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
 })
-const roboto = Roboto_Mono({
+const roboto = Roboto({
     subsets: ['latin'],
-    display: 'swap',
-    variable: '--font-roboto'
+    weight: ['100', '300', '400', '500', '700', '900']
 })
+
 
 const MenuSidebar = () => {
     const [solde, setSolde] = useState<boolean>(false)
@@ -106,16 +106,16 @@ const MenuSidebar = () => {
                         solde &&
                         <ul className='text-sousmenu bg-white'>
                             <li className='h-10 flex w-full justify-end pr-15px'>
-                                <Link href='#' className={`${roboto.variable} font-roboto font-medium text-base`}>Gestion des solde</Link>
+                                <Link href='#' className={`${roboto.className} font-roboto font-medium text-base hover:text-primary`}>Gestion des solde</Link>
                             </li>
                             <li className='h-10 flex w-full justify-end pr-15px'>
-                                <Link href='#' className={`${roboto.variable} font-roboto font-normal text-base`}>Ajuster un solde</Link>
+                                <Link href='#' className={`${roboto.className} font-roboto font-normal text-base hover:text-primary`}>Ajuster un solde</Link>
                             </li>
                             <li className='h-10 flex  w-full justify-end pr-15px'>
-                                <Link href='#' className={`${roboto.variable} font-roboto font-normal text-base`}>Compteurs</Link>
+                                <Link href='#' className={`${roboto.className} font-roboto font-normal text-base hover:text-primary`}>Compteurs</Link>
                             </li>
                             <li className='h-10 flex  w-full justify-end pr-15px'>
-                                <Link href='#' className={`${roboto.variable} font-roboto font-normal text-base`}>Historique</Link>
+                                <Link href='#' className={`${roboto.className} font-roboto font-normal text-base hover:text-primary`}>Historique</Link>
                             </li>
                         </ul>
                     }
