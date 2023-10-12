@@ -51,23 +51,16 @@ const addData = async ({
     try {
       const res = await fetch(`api/manatime`, {
         method: "POST",
-        body: JSON.stringify({ utilisateur, categorie, periode, sa, sp, sf }),
-        headers: {
-          "Content-Type": "application/json" // Correction de l'en-tête
-        }
+        body: JSON.stringify({ utilisateur, categorie, periode, sa, sp, sf })
       });
   
       if (res.status === 200) {
-        // Si la requête POST a réussi (statut 200 OK), vous pouvez gérer la réponse si nécessaire
         const response = await res.json();
-        // Faites quelque chose avec la réponse si nécessaire
         return response
       } else {
-        // Gérez d'autres statuts de réponse si nécessaire
         console.error('L\'ajout a échoué avec le statut :', res.status);
       }
     } catch (error) {
-      // Gérez les erreurs liées à la requête
       console.error('Une erreur s\'est produite :', error);
     }
   };
