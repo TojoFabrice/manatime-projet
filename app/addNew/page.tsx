@@ -46,25 +46,32 @@ const addData = async ({
     periode: string;
     sa: string;
     sp: string;
-    sf: string
+    sf: string;
   }) => {
     try {
-      const res = await fetch(`api/manatime`, {
+      const response = await fetch(`api/manatime`, {
         method: "POST",
-        body: JSON.stringify({ utilisateur, categorie, periode, sa, sp, sf })
+        body: JSON.stringify({ utilisateur, categorie, periode, sa, sp, sf }),
+        headers: {
+          "Content-Type": "application/json"
+        }
       });
+
+      console.log('>>>>>>>>>>>>', response);
+      
   
-      if (res.status === 200) {
-        const response = await res.json();
-        return response
-      } else {
-        console.error('L\'ajout a échoué avec le statut :', res.status);
+      if (response.ok) {
+        const data = await response.json();
+        return data;
       }
+  
+      const errorMessage = `L'ajout a échoué avec le statut : ${response.status}`;
+      throw new Error(errorMessage);
     } catch (error) {
       console.error('Une erreur s\'est produite :', error);
+      throw error; 
     }
   };
-  
 
 
   

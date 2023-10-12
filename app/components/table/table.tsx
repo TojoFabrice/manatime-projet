@@ -29,31 +29,26 @@ const Table = ({ datas }: any) => {
     },[datas])
 
     const deleteData = async (id: string) => {
-        // const res = fetch(`api/manatime/${id}`, {
-        //   method: "DELETE",
-        //   //@ts-ignore
-        //   "Content-Type": "application/json",
-        // });
-        // setTableData((prev) => prev.filter((item:any) => item.id !== id))
-        // return (await res).json();
-
         try {
-            // Envoie la requête DELETE au serveur
-            const res = await fetch(`api/manatime/${id}`, {
-              method: "DELETE",
-            });
-        
-            if (res.status === 200) {
-              const response = await res.json();
-                setTableData((prev) => prev.filter((item: any) => item.id !== id));
-                return response
-            } else {
-              console.error('La suppression a échoué avec le statut :', res.status);
-            }
+          // Envoie la requête DELETE au serveur
+          const response = await fetch(`api/manatime/${id}`, {
+            method: "DELETE",
+          });
+      
+          if (response.ok) {
+            const responseData = await response.json();
+            setTableData((prev) => prev.filter((item: any) => item.id !== id));
+            return responseData;
+          } else {
+            console.error('La suppression a échoué avec le statut :', response.status);
+            throw new Error(`La suppression a échoué avec le statut : ${response.status}`);
+          }
         } catch (error) {
-            console.error('Une erreur s\'est produite :', error);
+          console.error('Une erreur s\'est produite :', error);
+          throw error; 
         }
-    };
+      };
+      
 
 
     const handleClickOpen = (id: string) => {
