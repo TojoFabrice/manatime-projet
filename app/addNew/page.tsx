@@ -103,9 +103,9 @@ export default function AddNew() {
                     />
                     <TextField fullWidth inputRef={periodeRef} label="Période" id="Période" />
                     <div className='flex space-x-2'>
-                        <TextField fullWidth inputRef={saRef} label="Soldeactuel" id="sa" />
-                        <TextField fullWidth inputRef={spRef} label="Soldepris" id="sp" />
-                        <TextField fullWidth inputRef={sfRef} label="Soldefutur" id="sf" />
+                        <TextField fullWidth inputRef={saRef} label="Solde actuel" id="sa" type="number" />
+                        <TextField fullWidth inputRef={spRef} label="Solde pris" id="sp" type="number" />
+                        <TextField fullWidth inputRef={sfRef} label="Solde futur" id="sf" type="number" />
                     </div>
                     <div className='flex justify-end space-x-3'>
                         <Button variant="outlined" color="error">Annuler</Button>
