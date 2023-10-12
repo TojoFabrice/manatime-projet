@@ -9,7 +9,6 @@ import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import { Toaster, toast } from "react-hot-toast";
 
-const server = process.env.SERVER;
 const addData = async ({
     utilisateur,
     categorie,
@@ -29,7 +28,7 @@ const addData = async ({
       method: "POST",
       body: JSON.stringify({ utilisateur, categorie, periode, sa, sp, sf }),
       //@ts-ignore
-    //   "Content-Type": "application/json",
+      "Content-Type": "application/json",
     });
     return (await res).json();
   };

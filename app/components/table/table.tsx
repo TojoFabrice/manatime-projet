@@ -23,7 +23,6 @@ const Table = ({ datas }: any) => {
     const [open, setOpen] = useState(false);
     const [idToDelete, setIdToDelete] = useState<string>('')
     const [tableData, setTableData] = useState([]);
-    const server = process.env.SERVER;
     
     useEffect(() => {
         setTableData(datas)
@@ -33,7 +32,7 @@ const Table = ({ datas }: any) => {
         const res = fetch(`api/manatime/${id}`, {
           method: "DELETE",
           //@ts-ignore
-        //   "Content-Type": "application/json",
+          "Content-Type": "application/json",
         });
         setTableData((prev) => prev.filter((item:any) => item.id !== id))
         return (await res).json();
