@@ -18,7 +18,14 @@ let dataManaTime: DataManaTime[] = [];
 const loadData = async () => {
     try {
       const jsonData = await fs.readFile(dataFileName, 'utf8');
-      dataManaTime = JSON.parse(jsonData);
+      // Vérification du contenu JSON
+      if (jsonData.trim() === '') {
+        // Le fichier JSON est vide
+        console.log('Le fichier JSON est vide.');
+      } else {
+        // Le fichier JSON contient des données
+        dataManaTime = JSON.parse(jsonData);
+      }
       
     } catch (error) {
       dataManaTime = [];
