@@ -9,6 +9,30 @@ import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import { Toaster, toast } from "react-hot-toast";
 
+// const addData = async ({
+//     utilisateur,
+//     categorie,
+//     periode,
+//     sa,
+//     sp,
+//     sf
+//   }: {
+//     utilisateur: string | null;
+//     categorie: string;
+//     periode: string;
+//     sa: string;
+//     sp: string;
+//     sf: string
+//   }) => {
+//     const res = fetch(`api/manatime`, {
+//       method: "POST",
+//       body: JSON.stringify({ utilisateur, categorie, periode, sa, sp, sf }),
+//       //@ts-ignore
+//       "Content-Type": "application/json",
+//     });
+//     return (await res).json();
+//   };
+
 const addData = async ({
     utilisateur,
     categorie,
@@ -24,14 +48,31 @@ const addData = async ({
     sp: string;
     sf: string
   }) => {
-    const res = fetch(`api/manatime`, {
-      method: "POST",
-      body: JSON.stringify({ utilisateur, categorie, periode, sa, sp, sf }),
-      //@ts-ignore
-      "Content-Type": "application/json",
-    });
-    return (await res).json();
+    try {
+      const res = await fetch(`api/manatime`, {
+        method: "POST",
+        body: JSON.stringify({ utilisateur, categorie, periode, sa, sp, sf }),
+        headers: {
+          "Content-Type": "application/json" // Correction de l'en-tête
+        }
+      });
+  
+      if (res.status === 200) {
+        // Si la requête POST a réussi (statut 200 OK), vous pouvez gérer la réponse si nécessaire
+        const response = await res.json();
+        // Faites quelque chose avec la réponse si nécessaire
+        return response
+      } else {
+        // Gérez d'autres statuts de réponse si nécessaire
+        console.error('L\'ajout a échoué avec le statut :', res.status);
+      }
+    } catch (error) {
+      // Gérez les erreurs liées à la requête
+      console.error('Une erreur s\'est produite :', error);
+    }
   };
+  
+
 
   
 export default function AddNew() {
