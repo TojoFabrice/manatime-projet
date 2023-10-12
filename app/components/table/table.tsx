@@ -33,7 +33,7 @@ const Table = ({ datas }: any) => {
         const res = fetch(`api/manatime/${id}`, {
           method: "DELETE",
           //@ts-ignore
-          "Content-Type": "application/json",
+        //   "Content-Type": "application/json",
         });
         setTableData((prev) => prev.filter((item:any) => item.id !== id))
         return (await res).json();

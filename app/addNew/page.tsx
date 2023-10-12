@@ -29,7 +29,7 @@ const addData = async ({
       method: "POST",
       body: JSON.stringify({ utilisateur, categorie, periode, sa, sp, sf }),
       //@ts-ignore
-      "Content-Type": "application/json",
+    //   "Content-Type": "application/json",
     });
     return (await res).json();
   };
