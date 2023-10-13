@@ -34,3 +34,16 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## RETOUR
+
+j'ai utilisé Material ui pour le form et modal de confirmation
+j'ai utilisé react-hot-toast pour le toast
+j'ai utilisé tailwind pour le style
+
+## Remarque
+
+le deployement sur github n'est pas fait. J'ai essayé deployer sur vercel mais il y a une petite error lors du CRUD; par contre il marche bien sur local.
+
+## lien 
+https://manatime-projet-r1a1re0tz-tojofabrice.vercel.app/manatime
