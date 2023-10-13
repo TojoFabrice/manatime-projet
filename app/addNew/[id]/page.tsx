@@ -20,6 +20,12 @@ const PageModif = () => {
     const options = ['Jean Claude', 'Marie Jane', 'Peter Parker', 'Docteur Strange', 'Thor', 'Black Panther', 'John snow', 'Garry Daniel'];
     const router = useRouter();
     const segments = usePathname().split('/');
+    const [errorAnnee, setErrorAnnee] = useState(false);
+
+    const isYearValid = (year: any) => {
+        return /^\d{4}$/.test(year);
+    };
+
 
     const id = segments[segments.length - 1];
 
@@ -35,6 +41,32 @@ const PageModif = () => {
 
     const [value, setValue] = useState<string | null>(options[0]);
     const [inputValue, setInputValue] = useState('');
+    const [errors, setErrors] = useState<{ [key in keyof MyData]: boolean }>({
+        utilisateur: false,
+        categorie: false,
+        periode: false,
+        sa: false,
+        sp: false,
+        sf: false,
+    });
+
+    const validateFields = () => {
+        const newErrors: { [key in keyof MyData]: boolean } = { ...errors };
+
+        for (const field in modifiedData) {
+            const fieldName = field as keyof MyData;
+
+            if (!modifiedData[fieldName].trim()) {
+                newErrors[fieldName] = true;
+            } else {
+                newErrors[fieldName] = false;
+            }
+        }
+
+        setErrors(newErrors);
+
+        return Object.values(newErrors).every((error) => !error);
+    };
 
     useEffect(() => {
         if (id) {
@@ -78,6 +110,19 @@ const PageModif = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+
+        const isValidYear = isYearValid(modifiedData.periode);
+
+        if (!isValidYear) {
+            setErrorAnnee(true);
+            return
+        } else {
+            setErrorAnnee(false);
+        }
+
+        if (validateFields()) {
+            console.log('Form data:', modifiedData);
+        }
 
         if (!modifiedData.utilisateur || !modifiedData.categorie || !modifiedData.periode || !modifiedData.sa || !modifiedData.sp || !modifiedData.sf) {
             toast.error('Les champs ne peuvent pas être vides');
@@ -130,6 +175,8 @@ const PageModif = () => {
                         id="catégorie"
                         value={modifiedData?.categorie || ''}
                         onChange={handleInputChange}
+                        error={errors.categorie}
+                        helperText={errors.categorie ? 'categorie is required' : ''}
                     />
                     <TextField
                         fullWidth
@@ -137,7 +184,10 @@ const PageModif = () => {
                         name="periode"
                         id="Période"
                         value={modifiedData.periode || ''}
-                        onChange={handleInputChange} />
+                        onChange={handleInputChange}
+                        error={errorAnnee}
+                        helperText={errorAnnee ? 'Invalid année (year)' : ''}
+                    />
                     <div className='flex space-x-2'>
                         <TextField fullWidth
                             label="Solde actuel"
@@ -145,7 +195,9 @@ const PageModif = () => {
                             name='sa'
                             type="number"
                             value={modifiedData.sa || ''}
-                            onChange={handleInputChange} />
+                            onChange={handleInputChange}
+                            error={errors.sa}
+                            helperText={errors.sa ? 'Solde actuel is required' : ''} />
                         <TextField
                             fullWidth
                             label="Solde pris"
@@ -153,14 +205,18 @@ const PageModif = () => {
                             name='sp'
                             type="number"
                             value={modifiedData.sp || ''}
-                            onChange={handleInputChange} />
+                            onChange={handleInputChange}
+                            error={errors.sp}
+                            helperText={errors.sp ? 'Solde pris is required' : ''} />
                         <TextField fullWidth
                             label="Solde futur"
                             id="sf"
                             name='sf'
                             type="number"
                             value={modifiedData.sf || ''}
-                            onChange={handleInputChange} />
+                            onChange={handleInputChange}
+                            error={errors.sf}
+                            helperText={errors.sf ? 'Solde futur is required' : ''} />
                     </div>
                     <div className='flex justify-end space-x-3'>
                         <Button variant="outlined" color="error" onClick={() => router.push('/manatime')}>Annuler</Button>
