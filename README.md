@@ -40,7 +40,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 j'ai utilisé Material ui pour le form et modal de confirmation
 j'ai utilisé react-hot-toast pour le toast
 j'ai utilisé tailwind pour le style
-
+J'ai utilisé database.json comme stockage des deonnées
 ## Remarque
 
 le deployement sur github n'est pas fait. J'ai essayé deployer sur vercel mais il y a une petite error lors du CRUD; par contre il marche bien sur local.
