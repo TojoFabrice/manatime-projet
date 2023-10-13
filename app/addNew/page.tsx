@@ -9,29 +9,6 @@ import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import { Toaster, toast } from "react-hot-toast";
 
-// const addData = async ({
-//     utilisateur,
-//     categorie,
-//     periode,
-//     sa,
-//     sp,
-//     sf
-//   }: {
-//     utilisateur: string | null;
-//     categorie: string;
-//     periode: string;
-//     sa: string;
-//     sp: string;
-//     sf: string
-//   }) => {
-//     const res = fetch(`api/manatime`, {
-//       method: "POST",
-//       body: JSON.stringify({ utilisateur, categorie, periode, sa, sp, sf }),
-//       //@ts-ignore
-//       "Content-Type": "application/json",
-//     });
-//     return (await res).json();
-//   };
 
 const addData = async ({
     utilisateur,
@@ -57,8 +34,6 @@ const addData = async ({
         }
       });
 
-      console.log('>>>>>>>>>>>>', response);
-      
   
       if (response.ok) {
         const data = await response.json();

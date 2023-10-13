@@ -2,13 +2,14 @@
 
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-import solder from '../../../public/icons/Solder.svg'
-import ajuster from '../../../public/icons/Ajuster.svg'
-import transferer from '../../../public/icons/Transferer.svg'
+import solder from '/public/icons/Solder.svg'
+import ajuster from '/public/icons/Ajuster.svg'
+import transferer from '/public/icons/Transferer.svg'
 import { Roboto } from 'next/font/google'
 
 import { Toaster, toast } from "react-hot-toast";
 import ModalConfirmDelete from '../modal/ModalConfirmDelete'
+import { useRouter } from 'next/navigation'
 
 const roboto = Roboto({
     subsets: ['latin'],
@@ -16,13 +17,11 @@ const roboto = Roboto({
 })
 
 
-
-
-
 const Table = ({ datas }: any) => {
     const [open, setOpen] = useState(false);
     const [idToDelete, setIdToDelete] = useState<string>('')
     const [tableData, setTableData] = useState([]);
+    const router = useRouter();
     
     useEffect(() => {
         setTableData(datas)
@@ -50,11 +49,14 @@ const Table = ({ datas }: any) => {
       };
       
 
-
     const handleClickOpen = (id: string) => {
         setIdToDelete(id)
         setOpen(true);
     };
+
+    const handleUpdateId = (id: string) => {
+        router.push(`/addNew/${id}`)
+    }
 
     const handleClose = () => {
         setOpen(false);
@@ -62,7 +64,7 @@ const Table = ({ datas }: any) => {
 
     const handleDelete = async (id: string) => {
         await deleteData(id);
-        toast.success("Data Deleted");
+        toast.success("Utilisateur supprimé");
         handleClose()
     };
 
@@ -102,11 +104,11 @@ const Table = ({ datas }: any) => {
                                         <td className="px-15px text-base text-shadow whitespace-nowrap">{item.sf}</td>
                                         <td className="px-15px text-base text-shadow whitespace-nowrap">
                                             <div className='flex justify-around'>
-                                                <button>
-                                                    <Image src={ajuster} alt="solder" width={32} height={32} />
+                                                <button onClick={() => handleUpdateId(item.id)}>
+                                                    <Image src={ajuster} alt="ajuster" width={32} height={32} />
                                                 </button>
                                                 <button>
-                                                    <Image src={transferer} alt="solder" width={32} height={32} />
+                                                    <Image src={transferer} alt="transferer" width={32} height={32} />
                                                 </button>
                                                 <button onClick={() => handleClickOpen(item.id)}>
                                                     <Image src={solder} alt="solder" width={32} height={32} />

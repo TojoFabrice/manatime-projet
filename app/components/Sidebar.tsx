@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image'
-import burgerButton from '../../public/icons/Burger_button.svg'
+import burgerButton from '/public/icons/Burger_button.svg'
 import MenuSidebar from './menu/MenuSidebar'
 import { useVisibilityContext } from '../context/VisibilityContext'
 

@@ -3,17 +3,17 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import Image from 'next/image'
-import accueil from '../../../public/icons/Accueil.svg'
-import add from '../../../public/icons/Add.svg'
-import stripe from '../../../public/icons/Stripe.svg'
-import stripeBlue from '../../../public/icons/stripe_blue.svg'
-import monEspace from '../../../public/icons/Mon_espace.svg'
-import validation from '../../../public/icons/Validation.svg'
-import indicateur from '../../../public/icons/Indicateurs.svg'
-import soldes from '../../../public/icons/Soldes.svg'
-import soldesBlue from '../../../public/icons/Soldes_blue.svg'
-import recherche from '../../../public/icons/Recherche.svg'
-import graphic from '../../../public/icons/Graphic.svg'
+import accueil from '/public/icons/Accueil.svg'
+import add from '/public/icons/Add.svg'
+import stripe from '/public/icons/Stripe.svg'
+import stripeBlue from '/public/icons/stripe_blue.svg'
+import monEspace from '/public/icons/Mon_espace.svg'
+import validation from '/public/icons/Validation.svg'
+import indicateur from '/public/icons/Indicateurs.svg'
+import soldes from '/public/icons/Soldes.svg'
+import soldesBlue from '/public/icons/Soldes_blue.svg'
+import recherche from '/public/icons/Recherche.svg'
+import graphic from '/public/icons/Graphic.svg'
 import { Poppins, Roboto } from 'next/font/google'
 
 
@@ -56,77 +56,87 @@ const MenuSidebar = () => {
             </div>
             <div className='bg-gradient-to-b from-gradientTop to-gradientBottom w-full h-[calc(100vh-198px)] relative'>
                 <ul>
-                    <li className='border-t border-b border-t-borderMenu border-b-borderMenu h-66px flex items-center relative'>
-                        <Image src={monEspace} alt="Abscence icon" width={22} height={22} className='ml-5' />
-                        <div className='text-center w-full absolute'>
-                            <Link href="#" className={`${poppins.variable} font-sans font-medium text-15px`}>Mon espace</Link>
-                        </div>
-                        <button className='absolute right-[15px]'>
-                            <Image src={stripe} alt="Abscence icon" width={11} height={7} />
-                        </button>
+                    <li className={`z-10 border-t border-b border-t-borderMenu border-b-borderMenu h-66px flex items-center relative `}>
+                        <Link href="#" className={`${poppins.variable} font-sans font-medium text-lg flex w-full h-full`}>
+                            <Image src={monEspace} alt="Abscence icon" width={22} height={22} className='ml-5' />
+                            <div className={`${poppins.variable} font-sans font-medium text-15px text-center w-full h-[66px] absolute flex justify-center items-center`} >
+                                Mon espace
+                            </div>
+                            <div className='absolute right-[15px] inset-y-0 flex items-center'>
+                                <Image src={stripe} alt="Abscence icon" width={11} height={7} />
+                            </div>
+                        </Link>
                     </li>
-                    <li className='border-t border-b border-t-borderMenu border-b-borderMenu h-66px flex items-center relative'>
-                        <Image src={validation} alt="Abscence icon" width={22} height={22} className='ml-5' />
-                        <div className='text-center w-full absolute'>
-                            <Link href="#" className={`${poppins.variable} font-sans font-medium text-15px`}>Validation</Link>
-                        </div>
-                        <button className='absolute right-[15px]'>
-                            <Image src={stripe} alt="Abscence icon" width={11} height={7} />
-                        </button>
+                    <li className={`z-10 border-t border-b border-t-borderMenu border-b-borderMenu h-66px flex items-center relative `}>
+                        <Link href="#" className={`${poppins.variable} font-sans font-medium text-lg flex w-full h-full`}>
+                            <Image src={validation} alt="Abscence icon" width={22} height={22} className='ml-5' />
+                            <div className={`${poppins.variable} font-sans font-medium text-15px text-center w-full h-[66px] absolute flex justify-center items-center`} >
+                                Validation
+                            </div>
+                            <div className='absolute right-[15px] inset-y-0 flex items-center'>
+                                <Image src={stripe} alt="Abscence icon" width={11} height={7} />
+                            </div>
+                        </Link>
                     </li>
-                    <li className='border-t border-b border-t-borderMenu border-b-borderMenu h-66px flex items-center relative'>
-                        <Image src={indicateur} alt="Abscence icon" width={22} height={22} className='ml-5' />
-                        <div className='text-center w-full absolute'>
-                            <Link href="#" className={`${poppins.variable} font-sans font-medium text-15px`}>Indicateur</Link>
-                        </div>
-                        <button className='absolute right-[15px]'>
-                            <Image src={stripe} alt="Abscence icon" width={11} height={7} />
-                        </button>
+                    <li className={`z-10 border-t border-b border-t-borderMenu border-b-borderMenu h-66px flex items-center relative `}>
+                        <Link href="#" className={`${poppins.variable} font-sans font-medium text-lg flex w-full h-full`}>
+                            <Image src={indicateur} alt="Abscence icon" width={22} height={22} className='ml-5' />
+                            <div className={`${poppins.variable} font-sans font-medium text-15px text-center w-full h-[66px] absolute flex justify-center items-center`} >
+                                Indicateur
+                            </div>
+                            <div className='absolute right-[15px] inset-y-0 flex items-center'>
+                                <Image src={stripe} alt="Abscence icon" width={11} height={7} />
+                            </div>
+                        </Link>
                     </li>
-                    <li className={`border-t border-b border-t-borderMenu border-b-borderMenu h-66px flex items-center relative ${solde ? 'bg-white text-[#084693] border-b-white' : ''}`}>
-                        {
-                            solde ?
-                                <Image src={soldesBlue} alt="Abscence icon" width={22} height={22} className='ml-5' />
-                                :
-                                <Image src={soldes} alt="Abscence icon" width={22} height={22} className='ml-5' />
-                        }
-                        <div className='text-center w-full absolute'>
-                            <Link href="#" className={`${poppins.variable} font-sans font-medium text-15px`}>Soldes</Link>
-                        </div>
-                        <button className='absolute right-[15px]' onClick={() => setSolde(!solde)}>
+                    <li className={`z-10 border-t border-b border-t-borderMenu border-b-borderMenu h-66px flex items-center relative ${solde ? 'bg-white text-[#084693] border-b-white' : ''}`} onClick={() => setSolde(!solde)}>
+                        <Link href="#" className={`${poppins.variable} font-sans font-medium text-lg flex w-full h-full`}>
                             {
                                 solde ?
-                                    <Image src={stripeBlue} alt="Abscence icon" width={11} height={7} className='rotate-180 duration-500' />
+                                    <Image src={soldesBlue} alt="Abscence icon" width={22} height={22} className='ml-5' />
                                     :
-                                    <Image src={stripe} alt="Abscence icon" width={11} height={7} className='duration-500' />
+                                    <Image src={soldes} alt="Abscence icon" width={22} height={22} className='ml-5' />
                             }
-                        </button>
+                            <div className={`${poppins.variable} font-sans font-medium text-15px text-center w-full h-[66px] absolute flex justify-center items-center`} >
+                                Soldes
+                            </div>
+                            <div className='absolute right-[15px] inset-y-0 flex items-center'>
+                                {
+                                    solde ?
+                                        <Image src={stripeBlue} alt="Abscence icon" width={11} height={7} className='rotate-180 duration-500' />
+                                        :
+                                        <Image src={stripe} alt="Abscence icon" width={11} height={7} className='duration-500' />
+                                }
+                            </div>
+                        </Link>
                     </li>
                     {
                         solde &&
                         <ul className='text-sousmenu bg-white'>
-                            <li className='h-10 flex w-full justify-end pr-15px'>
+                            <li className='z-10 h-10 flex w-full justify-end pr-15px'>
                                 <Link href='#' className={`${roboto.className} font-roboto font-medium text-base hover:text-primary`}>Gestion des solde</Link>
                             </li>
-                            <li className='h-10 flex w-full justify-end pr-15px'>
+                            <li className='z-10 h-10 flex w-full justify-end pr-15px'>
                                 <Link href='#' className={`${roboto.className} font-roboto font-normal text-base hover:text-primary`}>Ajuster un solde</Link>
                             </li>
-                            <li className='h-10 flex  w-full justify-end pr-15px'>
+                            <li className='z-10 h-10 flex  w-full justify-end pr-15px'>
                                 <Link href='#' className={`${roboto.className} font-roboto font-normal text-base hover:text-primary`}>Compteurs</Link>
                             </li>
-                            <li className='h-10 flex  w-full justify-end pr-15px'>
+                            <li className='z-10 h-10 flex  w-full justify-end pr-15px'>
                                 <Link href='#' className={`${roboto.className} font-roboto font-normal text-base hover:text-primary`}>Historique</Link>
                             </li>
                         </ul>
                     }
-                    <li className='border-t border-b border-t-borderMenu border-b-borderMenu h-66px flex items-center relative'>
-                        <Image src={recherche} alt="Abscence icon" width={22} height={22} className='ml-5' />
-                        <div className='text-center w-full absolute'>
-                            <Link href="#" className={`${poppins.variable} font-sans font-medium text-15px`}>Recherche</Link>
-                        </div>
-                        <button className='absolute right-[15px]'>
-                            <Image src={stripe} alt="Abscence icon" width={11} height={7} />
-                        </button>
+                    <li className={`z-10 border-t border-b border-t-borderMenu border-b-borderMenu h-66px flex items-center relative`}>
+                        <Link href="#" className={`${poppins.variable} font-sans font-medium text-lg flex w-full h-full`}>
+                            <Image src={recherche} alt="Abscence icon" width={22} height={22} className='ml-5' />
+                            <div className={`${poppins.variable} font-sans font-medium text-15px text-center w-full h-[66px] absolute flex justify-center items-center`} >
+                                Recherche
+                            </div>
+                            <div className='absolute right-[15px] inset-y-0 flex items-center'>
+                                <Image src={stripe} alt="Abscence icon" width={11} height={7} />
+                            </div>
+                        </Link>
                     </li>
                 </ul>
                 <div className='absolute bottom-0'>

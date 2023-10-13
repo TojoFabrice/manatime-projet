@@ -3,7 +3,7 @@
 import { useVisibilityContext } from '@/app/context/VisibilityContext';
 import React from 'react'
 import Image from 'next/image'
-import logo from '../../../public/icons/Logo.svg'
+import logo from '/public/icons/Logo.svg'
 import Card from '../card/Card';
 import { listModule } from '@/app/data/listModule';
 

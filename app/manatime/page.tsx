@@ -6,8 +6,7 @@ import { useEffect, useState } from "react";
 export default function Manatime() {
 
     const [datas, setData] = useState(null)
-    const server = process.env.SERVER;
-    
+
     useEffect(() => {
         const fetchData = async () => {
         const response = await fetch(`api/manatime`)
