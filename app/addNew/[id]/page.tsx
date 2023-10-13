@@ -78,6 +78,12 @@ const PageModif = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+
+        if (!modifiedData.utilisateur || !modifiedData.categorie || !modifiedData.periode || !modifiedData.sa || !modifiedData.sp || !modifiedData.sf) {
+            toast.error('Les champs ne peuvent pas être vides');
+            return;
+        }
+
         if (modifiedData) {
             await handleUpdate()
             toast.success("Mise à jour Successfully");
